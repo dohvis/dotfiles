@@ -21,9 +21,10 @@ omz() {
 }
 
 install_theme() {
-  local themes_dir=/home/user/.oh-my-zsh/custom
+  local themes_dir=$HOME/.oh-my-zsh/custom
   mkdir ${themes_dir}/themes
-  curl -o ${themes_dir}/themes/spaceship.zsh-theme https://raw.githubusercontent.com/denysdovhan/spaceship-zsh-theme/master/install.zsh
+  # curl -o - https://raw.githubusercontent.com/denysdovhan/spaceship-zsh-theme/master/install.zsh | zsh
+  # sed -i "s/ZSH_THEME=\"[a-z]*\"/ZSH_THEME=\"spaceship\"/g" ~/.zshrc
 }
 
 neovim() {
