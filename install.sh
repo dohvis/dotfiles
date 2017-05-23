@@ -27,6 +27,11 @@ install_theme() {
   # sed -i "s/ZSH_THEME=\"[a-z]*\"/ZSH_THEME=\"spaceship\"/g" ~/.zshrc
 }
 
+install_plugins() {
+  mkdir $HOME/.oh-my-zsh/custom/plugins
+  git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+  sed -i "s/)$/ zsh-autosuggestions)/g"
+}
 neovim() {
   sudo apt-get install software-properties-common
   sudo add-apt-repository ppa:neovim-ppa/stable
@@ -39,7 +44,9 @@ venv() {
 }
 
 #python
-# install_zsh
+#install_zsh
 #omz
-install_theme
-# neovim
+#install_theme
+install_plugins
+#neovim
+
