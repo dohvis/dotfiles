@@ -15,22 +15,24 @@ install_zsh() {
 }
 
 omz() {
+  sudo apt-get install curl
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
   chsh -s /bin/zsh
 }
 
 install_theme() {
-  local themes_dir=$HOME/.oh-my-zsh/custom
+  local themes_dir=~/.oh-my-zsh/custom
   mkdir ${themes_dir}/themes
-  # curl -o - https://raw.githubusercontent.com/denysdovhan/spaceship-zsh-theme/master/install.zsh | zsh
-  # sed -i "s/ZSH_THEME=\"[a-z]*\"/ZSH_THEME=\"spaceship\"/g" ~/.zshrc
+  curl -o - https://raw.githubusercontent.com/denysdovhan/spaceship-zsh-theme/master/spaceship.zsh > spaceship.zsh
+  curl -o - https://raw.githubusercontent.com/denysdovhan/spaceship-zsh-theme/master/install.zsh | zsh
+  sed -i "s/ZSH_THEME=\"[a-z]*\"/ZSH_THEME=\"spaceship\"/g" ~/.zshrc
 }
 
 install_plugins() {
   mkdir $HOME/.oh-my-zsh/custom/plugins
   git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-  sed -i "s/)$/ zsh-autosuggestions)/g"
+  sed -i "s/)$/ zsh-autosuggestions)/g" ~/.zshrc
 }
 neovim() {
   sudo apt-get install software-properties-common
@@ -47,6 +49,6 @@ venv() {
 #install_zsh
 #omz
 #install_theme
-install_plugins
+#install_plugins
 #neovim
 
