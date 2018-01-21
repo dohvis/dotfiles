@@ -22,16 +22,17 @@ omz() {
 }
 
 install_theme() {
-  local themes_dir=~/.oh-my-zsh/custom
-  mkdir ${themes_dir}/themes
-  curl -o - https://raw.githubusercontent.com/denysdovhan/spaceship-zsh-theme/master/spaceship.zsh > spaceship.zsh
-  curl -o - https://raw.githubusercontent.com/denysdovhan/spaceship-zsh-theme/master/install.zsh | zsh
-  sed -i "s/ZSH_THEME=\"[a-z]*\"/ZSH_THEME=\"spaceship\"/g" ~/.zshrc
+  mkdir $HOME/.zFunctions  
+  git clone git@github.com:denysdovhan/spaceship-prompt.git
+  ln -s $PWD/spaceship-prompt/spaceship.zsh $HOME/.zFunctions/prompt_spaceship_setup
+  echo "fpath=( "$HOME/.zfunctions" $fpath )" >> ~/.zshrc
+  echo "autoload -U promptinit; promptinit; prompt spaceship" >> ~/.zshrc
+  sed -i "s/ZSH_THEME=\"[a-z]*\"/ZSH_THEME=\"\"/g" ~/.zshrc
 }
 
 install_plugins() {
   mkdir $HOME/.oh-my-zsh/custom/plugins
-  git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+  git clone git://github.com/zsh-users/zsh-autosuggestions $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
   sed -i "s/)$/ zsh-autosuggestions)/g" ~/.zshrc
 }
 neovim() {
