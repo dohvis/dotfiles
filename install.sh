@@ -23,11 +23,11 @@ omz() {
 
 install_theme() {
   mkdir $HOME/.zFunctions  
-  git clone git@github.com:denysdovhan/spaceship-prompt.git
-  ln -s $PWD/spaceship-prompt/spaceship.zsh $HOME/.zFunctions/prompt_spaceship_setup
+  git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
+  ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
   echo "fpath=( "$HOME/.zfunctions" $fpath )" >> ~/.zshrc
   echo "autoload -U promptinit; promptinit; prompt spaceship" >> ~/.zshrc
-  sed -i "s/ZSH_THEME=\"[a-z]*\"/ZSH_THEME=\"\"/g" ~/.zshrc
+  sed -i "s/ZSH_THEME=\"[a-z]*\"/ZSH_THEME=\"spaceship\"/g" ~/.zshrc
 }
 
 install_plugins() {
