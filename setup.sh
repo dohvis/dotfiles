@@ -1,21 +1,21 @@
 python() {
   sudo apt-get update
-  sudo apt-get install python-dev python-pip python3-dev python3-pip
+  sudo apt-get install -y python-dev python-pip python3-dev python3-pip
 }
 
 fish() {
   sudo apt-add-repository ppa:fish-shell/release-2
   sudo apt-get update
-  sudo apt-get install fish
+  sudo apt-get install -y fish
 }
 
 install_zsh() {
   sudo apt-get update
-  sudo apt-get install zsh
+  sudo apt-get install -y zsh
 }
 
 install_omz() {
-  sudo apt-get install curl
+  sudo apt-get install -y curl
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
   chsh -s /bin/zsh
@@ -33,13 +33,13 @@ install_zsh_theme() {
 install_zsh_plugins() {
   mkdir $HOME/.oh-my-zsh/custom/plugins
   git clone git://github.com/zsh-users/zsh-autosuggestions $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-  sed -i "s/)$/ zsh-autosuggestions)/g" ~/.zshrc
 }
 neovim() {
-  sudo apt-get install software-properties-common
+  sudo apt-get install -y software-properties-common
   sudo add-apt-repository ppa:neovim-ppa/stable
   sudo apt-get update
-  sudo apt-get install neovim
+  sudo apt-get install -y neovim
+  echo "alias vi='nvim'" >> ~/.zshrc
 }
 
 venv() {
@@ -49,7 +49,7 @@ venv() {
 python
 install_zsh
 install_omz
-install_zsh_theme
+#install_zsh_theme
 install_zsh_plugins
 neovim
 
