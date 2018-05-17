@@ -14,14 +14,14 @@ install_zsh() {
   sudo apt-get install zsh
 }
 
-omz() {
+install_omz() {
   sudo apt-get install curl
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
   chsh -s /bin/zsh
 }
 
-install_theme() {
+install_zsh_theme() {
   mkdir $HOME/.zFunctions  
   git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
   ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
@@ -30,7 +30,7 @@ install_theme() {
   sed -i "s/ZSH_THEME=\"[a-z]*\"/ZSH_THEME=\"spaceship\"/g" ~/.zshrc
 }
 
-install_plugins() {
+install_zsh_plugins() {
   mkdir $HOME/.oh-my-zsh/custom/plugins
   git clone git://github.com/zsh-users/zsh-autosuggestions $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
   sed -i "s/)$/ zsh-autosuggestions)/g" ~/.zshrc
@@ -46,10 +46,10 @@ venv() {
   sudo pip install virtualenv virtualenvwrapper
 }
 
-#python
-#install_zsh
-#omz
-#install_theme
-#install_plugins
-#neovim
+python
+install_zsh
+install_omz
+install_zsh_theme
+install_zsh_plugins
+neovim
 

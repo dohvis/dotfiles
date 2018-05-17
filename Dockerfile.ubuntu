@@ -1,0 +1,12 @@
+FROM ubuntu:16.04
+MAINTAINER nerogit <nero.union12@gmail.com>
+
+RUN apt-get update
+RUN apt-get install -y software-properties-common vim
+
+RUN git clone git@github.com:nerogit/dotfiles.git
+RUN cd dotfiles/ && ./setup.sh
+
+RUN git clone https://github.com/pwndbg/pwndbg
+RUN cd pwndbg && ./setup.sh
+
