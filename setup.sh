@@ -3,11 +3,6 @@ python() {
   sudo apt-get install -y python-dev python-pip python3-dev python3-pip
 }
 
-fish() {
-  sudo apt-add-repository ppa:fish-shell/release-2
-  sudo apt-get update
-  sudo apt-get install -y fish
-}
 
 install_zsh() {
   sudo apt-get update
@@ -49,7 +44,7 @@ venv() {
 python
 install_zsh
 install_omz
-#install_zsh_theme
+install_zsh_theme
 install_zsh_plugins
 neovim
 
